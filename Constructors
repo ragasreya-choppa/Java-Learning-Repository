@@ -1,4 +1,4 @@
-Constructors:-
+CONSTRUCTORS-
 A constructor is a special member of a class that is used to initialize an object when the object is created.
 
 class Student {
@@ -10,3 +10,13 @@ class Student {
         age = 0;
     }
 }
+
+Here- Student() is the Constructor!
+When we create an object, Student s1 = new Student(); - 
+java automatically calls the Constructor- Student(). So the object's fields get initialized.
+
+WHY WE NEED CONSTRUCTORS-
+
+
+
+
