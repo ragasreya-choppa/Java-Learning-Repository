@@ -1,0 +1,12 @@
+Constructors:-
+A constructor is a special member of a class that is used to initialize an object when the object is created.
+
+class Student {
+    String name;
+    int age;
+
+    Student() {
+        name = "Unknown";
+        age = 0;
+    }
+}
