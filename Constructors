@@ -229,6 +229,88 @@ think like this-
 
 
 
+CONSTRUCTORS CAN CALL OTHER CONSTURCTORS!
+Java allows one constructor to call another constructor in the same class using-
+this(...)
+Think of it as- Hey, call another constructor of this same class.
+example-
+class Student {
+
+    String name;
+    int age;
+
+    Student() {
+        this("Unknown", 0);
+    }
+
+    Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+here, there are two constructors-
+1) student()
+2) Student(String name, int age)
+Suppose if we do- Student s1 = new Student(); -> Student() this constructor gets called!
+but inside Student() constructor, we have- this("Unknown", 0); that means-
+"Instead of doing the initialization myself, call the other constructor with "Unknown" and 0."
+so it goes like this-
+new Student()
+      ↓
+Student()
+      ↓
+this("Unknown", 0)
+      ↓
+Student("Unknown", 0)
+      ↓
+this.name = "Unknown"
+this.age = 0
+
+🧾Important Point-  When you use- this(...) - it must be the first statement inside the constructor.
+Correct one - ✅
+Car() {
+    this("Unknown", 0);
+} 
+Wrong one- ❌
+Car() {
+    System.out.println("Hello");
+    this("Unknown", 0);
+}
+Thats because- if you're delegating to another constructor, 
+do that before doing anything else in this constructor.
+
+2 this's:-
+this.name means "the name belonging to the current object."
+this.name = name;
+
+this(...) means "call another constructor in the same class."
+this("Unknown", 0);
+
+this.name    → current object's variable
+this(...)    → another constructor
+
+CONSTRUCTORS DON'T CREATE THE OBJECT-
+take:- Student s = new Student("Raga", 24); 
+here, "new" is responsible for allocating or creating object.
+The "constructor" is responsible for initializing that newly created object.
+
+
+5️⃣important points about constructors-
+1. Constructor has the same name as the class
+Student() { }
+2. Constructor has no return type
+Student() { }       // ✅
+void Student() { }  // ❌ constructor; this is a method
+3. Constructor runs when an object is created
+Student s = new Student();
+4. Constructors initialize object state
+Student(String name, int age) {
+    this.name = name;
+    this.age = age;
+}
+5. If you write no constructor, Java provides a default constructor. 
+If you write your own constructor, Java doesn't automatically provide one.
+
 
 
 
