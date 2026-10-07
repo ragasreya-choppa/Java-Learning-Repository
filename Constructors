@@ -78,6 +78,161 @@ class Student {
 THE CONSTRUCTOR HAS THE SAME NAME AS THE CLASS.
 ALSO CONSTRUCTOR DOES NOT HAVE A RETURN TYPE.
 
+Types of Constructor:-
+1) No-argument constructor
+2) Parameterized constructor
+3) Constructor overloading
+4) ***Default constructor
+
+1) No-argument constructor:-
+=> A constructor that takes no parameters is called a no-argument constructor.
+
+class Student {
+
+    String name;
+    int age;
+
+    Student() {
+        name = "Unknown";
+        age = 0;
+    }
+}
+
+2) Parameterized Constructor:-
+=> A constructor that accepts parameters is called a parameterized constructor.
+
+class Student {
+
+    String name;
+    int age;
+
+    Student(String name, int age) {
+        this.name = name; // this line means object's name = parameter's name
+        this.age = age;
+    }
+}
+when we do this- 
+Student s1 = new Student("Raga", 24);
+Student s2 = new Student("Sreya", 25);
+Each object gets its own values.
+
+3) Constructor Overloading:-
+=> Java allows us to have multiple constructors in the same class, as long as their parameter lists are different.
+This is called constructor overloading.
+
+class Student {
+
+    String name;
+    int age;
+
+    Student() {
+        name = "Unknown";
+        age = 0;
+    }
+
+    Student(String name) {
+        this.name = name;
+        age = 0;
+    }
+
+    Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+
+here, we have 3 consturctors-
+1) Student s1 = new Student(); calls Student()
+2) Student s2 = new Student("Raga"); calls Student(String name)
+3) Student s3 = new Student("Raga", 24); calls Student(String name, int age)
+
+Java figures out which constructor to call based on the arguments.
+
+4) Default Constructor:-
+suppose you write like this, and you didn't write any constructor,-
+class Student {
+}
+
+-> JAVA AUTOMSTICALLY PROVIDES A CONSTRUCTOR-
+Student() {
+}
+this is called Default Constructor.
+so, now this works-Student s1 = new Student();
+
+but...
+Suppose if you write your own constructor-
+class Student {
+
+    Student(String name) {
+        System.out.println(name);
+    }
+}
+now, Student s1 = new Student();  - this will not compile.
+Because!- ONCE YOU DEFINE A CONSTRUCTOR YOURSELF, JAVA DOES NOT AUTOMATCALLY PROVIDE THE DEFAULT CONSTRUCTOR.
+you would need to explicitly create this( Student s1 = new Student(); )
+class Student {
+
+    Student() {
+    }
+
+    Student(String name) {
+        System.out.println(name);
+    }
+}
+now- both works....
+Student s1 = new Student();
+Student s2 = new Student("Raga");
+
+DEFAULT CONSTRUCTOR VS NO-ARGUMENT CONSTRUCTOR:-
+=> Default constructor
+A constructor automatically provided by the compiler when you don't write any constructor.
+example-
+class Student {
+}
+Java provides-
+Student() {
+}
+=> No-argument constructor
+Any constructor that has zero parameters.
+example-
+class Student {
+
+    Student() {
+        System.out.println("Hello");
+    }
+}
+This is a no-argument constructor, 
+but technically it is not the compiler-provided default constructor.
+
+Remember Constructors like this- 
+Whenever you see-
+Student s = new Student("Raga", 24);
+think like this-
+                new Student("Raga", 24)
+                         |
+                         ↓
+                 Create Student object
+                         |
+                         ↓
+              Find matching constructor
+                         |
+                         ↓
+              Student(String, int)
+                         |
+                         ↓
+                 Initialize fields
+                         |
+                         ↓
+                    s references
+                    that object
+-> So the constructor's main job is:Set up the object into a valid initial state.
+
+
+
+
+
+
+
 
 
 
