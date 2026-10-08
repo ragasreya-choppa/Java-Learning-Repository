@@ -1,0 +1,141 @@
+ENCAPSULATION-
+https://www.youtube.com/watch?v=HOkFfun4bjo
+Encapsulation means keeping an object's data protected and controlling how that data can be accessed or changed.
+"PROBLEM"-
+suppose we have a BankAccount-
+class BankAccount {
+    double balance;
+}
+
+now someone can do-
+BankAccount account = new BankAccount();
+account.balance = -50000;
+
+A bank account shouldn't normally allow someone to directly change its balance to anything they want.
+We want the class to say:
+"You can't directly touch my balance. If you want to change it, you have to go through my rules." 
+That's where encapsulation comes in.
+
+"ENCAPSULATION = DATA HIDING + CONTROLLED ACCESS"
+instead of-
+class BankAccount {
+    double balance;
+}
+we make balance private-
+class BankAccount {
+    private double balance;
+}
+Now outside code cannot directly access it-
+BankAccount account = new BankAccount();
+account.balance = 5000;  // ❌ Error ( because of "private double balance;" )
+"balance can only be directly accessed from inside the BankAccount class." 
+This is called data hiding.
+
+"HOW DO WE ACCESS THE DATA?" 
+If balance is private, how can we read or modify it?
+" We provide methods that control access."
+class BankAccount {
+
+    private double balance;
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance = balance + amount;
+        }
+    }
+}
+now-
+BankAccount account = new BankAccount();
+account.deposit(5000);
+System.out.println(account.getBalance());
+Output- 5000.0
+but this is not allowed-
+account.balance = -50000;  // ❌
+=> the class controlls how balance can change!
+
+"KEY IDEA"
+Think of your class as a bank vault.
+              BankAccount
+        +-----------------------+
+        |                       |
+        |  private balance      |
+        |                       |
+        |  🔒 5000              |
+        |                       |
+        +-----------------------+
+             ↑             ↑
+             |             |
+        getBalance()   deposit()
+You don't allow someone to walk into the vault and change the money directly.
+Instead, they interact through controlled operations:
+account.deposit(1000); 
+     OR
+account.getBalance(); 
+"That's the encapsulation"
+
+"🔵GETTERS"
+=> A getter is a method used to retrieve/read a private field.
+Example-
+class Student {
+
+    private String name;
+    private int age;
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+}
+now-
+Student s = new Student();
+System.out.println(s.getName());
+System.out.println(s.getAge());
+-> so this gives controlled access to the data.
+
+"🔵SETTERS"
+=> A setter is a method used to modify/change a private field.
+Example-
+class Student {
+
+    private String name;
+    private int age;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+}
+then-
+Student s = new Student();
+s.setName("Raga");
+s.setAge(24);
+
+we are not doing-
+s.name = "Raga"; 
+
+we are doing-
+s.setName("Rahul");
+-> The class gets a chance to control what happens.
+
+"THE REAL POWER OF SETTERS" 
+=> 
+
+
+
+
+
+
+
+
+
+
