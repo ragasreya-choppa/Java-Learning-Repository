@@ -208,7 +208,50 @@ public void setName(String name) {
 people think that- every private variable needs getter + setter 
 no ❌
 You should expose only what makes sense.
+for example-
+class BankAccount {
 
+    private double balance;
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+        }
+    }
+}
+
+notice there is no - seBalance();
+That's intentional
+because we don't want this-
+account.setBalance(999999);
+We want the balance to change only through legitimate operations:
+account.deposit(1000);
+account.withdraw(500);
+=> This is better encapsulation.
+
+"ENCAPSULATION VS DATA HIDING"
+=> these terms are related but not exactly identical
+Data hiding- 
+means"preventing direct access to internal data"
+ex-
+private double balance;
+
+Encapsulation-
+Combining data and behavior inside a class and controlling how the outside world interacts with that object.
+Encapsulation
+     |
+     +---- Data hiding
+     |
+     +---- Controlled access
+     |
+     +---- Data + behavior bundled together
+
+
+"REAL-WORLD ANALOGY" 
 
 
 
