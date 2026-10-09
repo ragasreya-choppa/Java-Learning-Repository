@@ -128,7 +128,94 @@ s.setName("Rahul");
 -> The class gets a chance to control what happens.
 
 "THE REAL POWER OF SETTERS" 
-=> 
+=> suppose we have-
+class Student {
+
+    private int age;
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+}
+There's nothing stopping someone from doing:
+s.setAge(-500);
+That's still bad data.
+So we can put validation inside the setter.
+class Student {
+
+    private int age;
+
+    public void setAge(int age) {
+
+        if (age >= 0) {
+            this.age = age;
+        } else {
+            System.out.println("Age cannot be negative");
+        }
+    }
+
+    public int getAge() {
+        return age;
+    }
+}
+Now:-
+s.setAge(20);    // ✅
+s.setAge(-500);  // ❌ rejected
+=> This is the real benefit of encapsulation
+=> The class controls its own data.
+
+"ENCAPSULATION IS NOT "SIMPLE PRIVATE VARIABLES""
+This is an important distinction.
+you'll sometimes hear- Encapsulation means making variables private 
+Thats the part of it, but not the complete idea!
+Better Definition-
+Encapsulaton is bundling data and the methods that operate on that data inside a class, while restricting direct access to the internal state and providing controlled access where appropriate.
+class BankAccount {
+
+    private double balance;
+
+    public void deposit(double amount) {
+        // rules
+    }
+
+    public void withdraw(double amount) {
+        // rules
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+}
+Here:
+- balance → data
+- deposit() → behavior
+- withdraw() → behavior
+- getBalance() → controlled access
+Everything related to the bank account is bundled into the BankAccount class.
+That's encapsulation.
+
+"ENCAPSULATION DOESN'T MEAN EVERY FIELD NEEDS A SETTER"
+for example-
+private String name;
+
+public String getName() {
+    return name;
+}
+
+public void setName(String name) {
+    this.name = name;
+}
+people think that- every private variable needs getter + setter 
+no ❌
+You should expose only what makes sense.
+
+
+
+
+
+
+
+
 
 
 
