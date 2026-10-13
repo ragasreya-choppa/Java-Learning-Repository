@@ -252,6 +252,43 @@ Encapsulation
 
 
 "REAL-WORLD ANALOGY" 
+=> Think about a car.
+You don't directly manipulate the engine's internal components while driving.
+Instead, you use-
+steering wheel
+accelerator
+brake
+gear controls
+=> You interact with the car through a controlled interface.
+Similarly:
+class Car {
+
+    private int speed;
+
+    public void accelerate() {
+        if (speed < 120) {
+            speed += 10;
+        }
+    }
+
+    public void brake() {
+        if (speed > 0) {
+            speed -= 10;
+        }
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+}
+Outside code can't say:
+car.speed = 500;
+Instead:
+car.accelerate();
+car.brake();
+->The Car class controls its own internal state.
+That's Encapsulation.
+
 
 
 
